@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './Pokemon.css';
 
 const Pokemon = ({ name, url }) => {
 	const [pokemonWeight, setPokemonWeight] = useState();
@@ -30,7 +31,7 @@ const Pokemon = ({ name, url }) => {
 
 	return (
 		<li className='pokemon' key={name}>
-			<div className='pokemon-container'>
+			
 				<p className='pokemon-name'>{name}</p>
 				<div className='info'>
 					<img src={pokemonSprite} alt='Pokemon Icon'></img>
@@ -39,21 +40,23 @@ const Pokemon = ({ name, url }) => {
 						<p className='value'>{pokemonType.length && pokemonTypeRender()}</p>
 					</div>
 				</div>
+			
+			<div className='more-info-container'>
+				{isVisible ? (
+					<div className='more-info'>
+						<p className={isVisible === true ? 'activeLeft' : undefined}>
+							Weight: <span className='value'>{pokemonWeight}</span>
+						</p>
+						<p className={isVisible === true ? 'activeRight' : undefined}>
+							Height: <span className='value'>{pokemonHeight}</span>
+						</p>
+					</div>
+				) : (
+					<button className='info-button' onClick={() => setIsVisible(true)}>
+						Show more info
+					</button>
+				)}
 			</div>
-			{isVisible ? (
-				<div className='more-info'>
-					<p>
-						Weight: <span className='value'>{pokemonWeight}</span>
-					</p>
-					<p>
-						Height: <span className='value'>{pokemonHeight}</span>
-					</p>
-				</div>
-			) : (
-				<button className='info-button' onClick={() => setIsVisible(true)}>
-					Show more info
-				</button>
-			)}
 		</li>
 	);
 };

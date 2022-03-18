@@ -8,7 +8,6 @@ const PokemonList = ({ pokemons, filteredPokemons, valueLenght}) => {
 
 
 	return (
-		<div>
 			<ul className='pokemon-list'>
 				{valueLenght && filteredPokemons === [] ? 'No pokemon' : (
 					array.map(({ name, url }) => (
@@ -16,7 +15,7 @@ const PokemonList = ({ pokemons, filteredPokemons, valueLenght}) => {
 					))
 				) }
 			</ul>
-		</div>
+		
 	);
 }
 
