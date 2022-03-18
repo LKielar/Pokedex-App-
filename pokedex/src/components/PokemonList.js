@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PokemonList.css';
-import axios from 'axios';
+import Pokemon from './Pokemon.js'
 
-export default function PokemonList( {pokemon} ) {
-    const [pokemonType, setPokemonType] = useState();
-    const pokemonAtrributeHandler = () => {
-        axios.get('https://pokeapi.co/api/v2/pokemon/1/')
-        .then(res => res.data)
-        .then(data => console.log(data))
-    }
-    pokemonAtrributeHandler()
-    	return (
+const PokemonList = ({ pokemons, filteredPokemons, valueLenght}) => {
+	
+	const array = filteredPokemons.length ? filteredPokemons : pokemons;
+
+
+	return (
 		<div>
 			<ul className='pokemon-list'>
-				{pokemon.map(({name}) => (
-					<li style={{textTransform: 'capitalize'}} key={name}>
-						{name}
-					</li>
-				))}
+				{valueLenght && filteredPokemons === [] ? 'No pokemon' : (
+					array.map(({ name, url }) => (
+						<Pokemon name={name} url={url} key={name}/>
+					))
+				) }
 			</ul>
 		</div>
 	);
 }
+
+export default PokemonList;
