@@ -1,8 +1,9 @@
 .pokemon-list {
-    list-style: none;
-    padding: 1em;
-    width: inherit;
-    background-color: rgb(211, 197, 119);
-    border-radius: 5px;
-    text-align: center;
+	list-style: none;
+	padding: 1em;
+	width: inherit;
+	min-height: 90vh;
+	background-color: rgb(211, 197, 119);
+	border-radius: 5px;
+	text-align: center;
 }

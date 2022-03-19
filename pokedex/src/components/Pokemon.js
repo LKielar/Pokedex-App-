@@ -25,22 +25,20 @@ const Pokemon = ({ name, url }) => {
 		const pokemonTypeList = pokemonType.map((e) => e.type.name);
 		if (pokemonType.length === 2) {
 			return pokemonTypeList.join(', ');
-		};
+		}
 		return pokemonTypeList;
 	};
 
 	return (
 		<li className='pokemon' key={name}>
-			
-				<p className='pokemon-name'>{name}</p>
-				<div className='info'>
-					<img src={pokemonSprite} alt='Pokemon Icon'></img>
-					<div>
-						<p className='pokemon-type'>Type: </p>
-						<p className='value'>{pokemonType.length && pokemonTypeRender()}</p>
-					</div>
+			<p className='pokemon-name'>{name}</p>
+			<div className='info'>
+				<img src={pokemonSprite} alt='Pokemon Icon'></img>
+				<div>
+					<p className='pokemon-type'>Type: </p>
+					<p className='value'>{pokemonType.length && pokemonTypeRender()}</p>
 				</div>
-			
+			</div>
 			<div className='more-info-container'>
 				{isVisible ? (
 					<div className='more-info'>

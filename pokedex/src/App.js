@@ -24,7 +24,7 @@ const App = () => {
 		axios
 			.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`)
 			.then((res) => setPokemons([...pokemons, ...res.data.results]));
-		    setLoader(false);
+		setLoader(false);
 	}, [offset]);
 
 	const loadMore = () => {
@@ -32,7 +32,8 @@ const App = () => {
 		setOffset(nextOffset);
 	};
 
-	if(loader) return 'Loading..';
+	if (loader) return 'Loading..';
+
 	return (
 		<div className='App'>
 			<h1>Pokedex App</h1>

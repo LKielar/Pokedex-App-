@@ -1,13 +1,10 @@
 .search-box {
-    text-align: center;
+	text-align: center;
 }
 input {
-    padding: 1em;
-    margin: 1em;
-    font-size: 1.2rem;
-    border-radius: 3px;
-    border: none;
-}
-.highlight {
-    background-color: rgb(211, 197, 119);
+	padding: 1em;
+	margin: 1em;
+	font-size: 1.2rem;
+	border-radius: 3px;
+	border: none;
 }
