@@ -25,7 +25,7 @@ const Pokemon = ({ name, url }) => {
 		const pokemonTypeList = pokemonType.map((e) => e.type.name);
 		if (pokemonType.length === 2) {
 			return pokemonTypeList.join(', ');
-		}
+		};
 		return pokemonTypeList;
 	};
 

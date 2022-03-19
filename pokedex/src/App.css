@@ -16,9 +16,15 @@ h1 {
 }
 .load-more {
     align-self: center;
-    width: 100px;
+    background-color: rgb(255, 255, 255);
+    width: 9em;
     padding: 0.4em;
-    margin: 0.5em;
+    margin: 2em 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     cursor: pointer;
-    font-style: italic;
+    transition: background-color .4s;
+}
+.load-more:hover {
+    background-color: rgb(240, 240, 240);
 }

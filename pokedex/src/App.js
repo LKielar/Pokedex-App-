@@ -4,22 +4,27 @@ import './App.css';
 import PokemonList from './components/PokemonList';
 import PokemonSearch from './components/PokemonSearch';
 
-function App() {
+const App = () => {
 	const [filteredPokemons, setFilteredPokemons] = useState([]);
 	const [pokemons, setPokemons] = useState([]);
 	const [offset, setOffset] = useState(0);
 	const [valueLength, setValueLength] = useState(0);
+	const [loader, setLoader] = useState(true);
 
 	const searchForPokemon = (value) => {
-		const filteredNames = pokemons.filter((e) => e.name.includes(value) && e.name);
+		const filteredNames = pokemons.filter(
+			(e) => e.name.includes(value) && e.name
+		);
 		setFilteredPokemons(filteredNames);
-		setValueLength(value.length)
+		setValueLength(value.length);
 	};
 
 	useEffect(() => {
+		setLoader(true);
 		axios
 			.get(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`)
 			.then((res) => setPokemons([...pokemons, ...res.data.results]));
+		    setLoader(false);
 	}, [offset]);
 
 	const loadMore = () => {
@@ -27,14 +32,27 @@ function App() {
 		setOffset(nextOffset);
 	};
 
+	if(loader) return 'Loading..';
 	return (
 		<div className='App'>
 			<h1>Pokedex App</h1>
 			<PokemonSearch search={searchForPokemon} />
-			<PokemonList pokemons={pokemons} filteredPokemons={filteredPokemons} valueLength={valueLength}/>
-			<button className='load-more' onClick={loadMore}>Load more</button>
+			{loader ? (
+				<h2>Loading..</h2>
+			) : (
+				<>
+					<PokemonList
+						pokemons={pokemons}
+						filteredPokemons={filteredPokemons}
+						valueLength={valueLength}
+					/>
+				</>
+			)}
+			<button className='load-more' onClick={loadMore}>
+				Load more
+			</button>
 		</div>
 	);
-}
+};
 
 export default App;
